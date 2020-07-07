@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+/* font-family: 'Special Elite', cursive; */
+
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+/* font-family: 'Special Elite', cursive; */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +15,30 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  position: absolute;
+  text-align: center;
+
+  top:0;
+  bottom: 0;
+  left:0;
+  right: 0;
+}
+
+.font-elite{
+  font-family: 'Special Elite', cursive;
+}
+.font-sea{
+  font-family: 'Special Elite', cursive;
+}
+
+.odd-radius {
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
 }

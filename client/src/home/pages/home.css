@@ -1,0 +1,11 @@
+h1.home__header{
+    letter-spacing: 2vw;
+    font-size: 12vw;
+    
+}
+
+h4.home__sub-header{
+    letter-spacing: 2vw;
+    /* word-spacing: 1vw; */
+    font-size: 40px;
+}

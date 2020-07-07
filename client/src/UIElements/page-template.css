@@ -1,0 +1,27 @@
+.page-template__container {
+  /* border: 2px dotted black; */
+  min-width: 95vw;
+  width: 95vw;
+  min-height: 95vh;
+  height: 95vh;
+}
+
+.home-template-style {
+    border-radius: 5px;
+    color: white;
+
+    /* Box Shadow */
+    -webkit-box-shadow: 0px 30px 34px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 30px 34px -4px rgba(0,0,0,0.75);
+    box-shadow: 0px 30px 34px -4px rgba(0,0,0,0.75);
+
+
+
+  background: #200122;  /* fallback for old browsers */
+  background-image: -webkit-linear-gradient(to right, #6f0000, #200122);  /* Chrome 10-25, Safari 5.1-6 */
+  background-image: linear-gradient(to right, #6f0000, #200122); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+
+
+
+}

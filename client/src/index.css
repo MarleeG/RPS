@@ -3,6 +3,14 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 /* font-family: 'Special Elite', cursive; */
+
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+/* font-family: 'Amatic SC', cursive; */
+
+html {
+  scroll-behavior: auto;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -37,6 +45,10 @@ code {
 }
 .font-sea{
   font-family: 'Special Elite', cursive;
+}
+
+.font-amatic{
+  font-family: 'Amatic SC', cursive;
 }
 
 .odd-radius {

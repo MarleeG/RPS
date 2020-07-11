@@ -9,6 +9,7 @@ import LoadingSpinner from "./UIElements/LoadingSpinner";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Home = React.lazy(() => import("./home/pages/home"));
+const Challenge = React.lazy(() => import("./challenge/page/challenge"));
 
 const App = () => {
   let routes = (
@@ -22,6 +23,18 @@ const App = () => {
           }
         >
           <Home />
+        </Suspense>
+      </Route>
+
+      <Route path="/challenges" exact>
+        <Suspense
+          fallback={
+            <div className="center">
+              <LoadingSpinner />
+            </div>
+          }
+        >
+          <Challenge />
         </Suspense>
       </Route>
 

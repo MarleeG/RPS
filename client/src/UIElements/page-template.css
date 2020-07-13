@@ -42,7 +42,8 @@ h1.challenge__header {
   font-size: 60px;
   z-index: 10;
 }
-.challenge-template-style {
-  /* border-radius: 1px; */
-  /* padding: 5px; */
+
+/* Battle */
+.battle-template-style{
+  border: 2px dotted salmon;
 }

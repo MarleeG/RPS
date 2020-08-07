@@ -41,7 +41,7 @@ const App = () => {
         </Suspense>
       </Route>
 
-      <Route path="/challenges/:battleType">
+      <Route path="/challenges/:battleTypeParam">
         <Suspense
           fallback={
             <div className="center">

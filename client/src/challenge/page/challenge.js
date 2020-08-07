@@ -4,29 +4,9 @@ import PageTemplate from "../../UIElements/page-template";
 import "./challenge.css";
 import ChallengeCard from "../components/challenge-card";
 
-// #e9ecef, #6c757d, #212529
-let cardInfo = [
-  {
-    type: "easy",
-    background: "#e9ecef",
-    title: "THE NICE GUY",
-    rules:
-      "I'll play by the rules. You'll be able to play an unlimited amount of times.",
-  },
-  {
-    type: "medium",
-    background: "#990000",
-    title: "THREAT",
-    rules: "Best 2 out of 3. Good luck, you'll need it.",
-  },
-  {
-    type: "hard",
-    background: "#212529",
-    title: "SUICIDE",
-    color: "#fff",
-    rules: "I don't play by the rules. I know your next move.",
-  },
-];
+import {cardInfo} from '../data/cardInfo';
+
+const cardData = cardInfo;
 
 const Challenge = (props) => {
   return (
@@ -38,7 +18,7 @@ const Challenge = (props) => {
 
 
         <div className="challenge__card-wrapper">
-          {cardInfo.map((info, i) => {
+          {cardData.map((info, i) => {
             return (
               <ChallengeCard
                 key={i}

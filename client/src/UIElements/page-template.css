@@ -45,5 +45,6 @@ h1.challenge__header {
 
 /* Battle */
 .battle-template-style{
-  border: 2px dotted salmon;
+  border: 2px solid #6f0000;
+  padding: 5px;
 }

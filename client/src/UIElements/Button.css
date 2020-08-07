@@ -13,12 +13,8 @@
   font-weight: bold;
   color: white;
 
-
   border: 1px solid white;
-  /* border-left: none; */
-  /* border-right: none; */
   letter-spacing: 20px;
-  
   border-radius: 40px;
 
   position: relative;
@@ -34,7 +30,6 @@
     linear-gradient(-145deg, #ffffff 8px, transparent 0);
   background-repeat: repeat-x;
   background-size: 16px 16px;
-
 }
 
 .home-btn-style:hover::before {
@@ -44,11 +39,22 @@
 
 .button--bop:active {
   transform: translateY(3px);
+}
 
-  /* background: linear-gradient(145deg, #ffffff 8px, transparent 0),
-    linear-gradient(-145deg, #ffffff 8px, transparent 0);
+/* Battle */
+
+.battle__fallback_content-btn {
+  border: 2px solid black;
+  border-radius: 50px;
+  width: 20vw;
+  height: 8vw;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.battle__fallback_content-btn:hover {
+  background: linear-gradient(145deg, black 8px, transparent 0),
+    linear-gradient(-145deg, black 8px, transparent 0);
   background-repeat: repeat-x;
   background-size: 16px 16px;
-
-  background-position: left-bottom; */
 }

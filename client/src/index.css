@@ -54,3 +54,27 @@ code {
 .odd-radius {
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
 }
+
+
+/* MODAL */
+.modal-enter {
+  transform: translateY(-10rem);
+  opacity: 0;
+}
+
+.modal-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 200ms;
+}
+
+.modal-exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.modal-exit-active {
+  transform: translateY(-10rem);
+  opacity: 0;
+  transition: all 200ms;
+}

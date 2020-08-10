@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { Fragment, useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 
 import "./Button.css";
@@ -27,22 +27,52 @@ const Button = (props) => {
   }, [checkButtonAnimation, isAnimated]);
 
   return (
-    <Link to={props.path}>
-      <button
-        type={props.type}
-        className={classes || "button-default"}
-        onMouseEnter={() => {
-          if(isAnimated){
-            setClasses(`${props.classes} animate__shakeX`);
-          }else{
-            setClasses(props.classes);
-          }
-        }}
-        onMouseLeave={() => setClasses(props.classes)}
-      >
-        {props.text}
-      </button>
-    </Link>
+    <Fragment>
+      {props.path ? (
+        <Link to={props.path}>
+          <button
+            type={props.type}
+            className={classes || "button-default"}
+            onMouseEnter={() => {
+              if (isAnimated) {
+                setClasses(`${props.classes} animate__shakeX`);
+              } else {
+                setClasses(props.classes);
+              }
+            }}
+            onMouseLeave={() => setClasses(props.classes)}
+            onClick={() => {
+              if (props.onClick) {
+                props.onClick();
+              }
+            }}
+          >
+            {props.text}
+          </button>
+        </Link>
+      ) : (
+        // without a path for the btn
+        <button
+          type={props.type}
+          className={classes || "button-default"}
+          onMouseEnter={() => {
+            if (isAnimated) {
+              setClasses(`${props.classes} animate__shakeX`);
+            } else {
+              setClasses(props.classes);
+            }
+          }}
+          onMouseLeave={() => setClasses(props.classes)}
+          onClick={() => {
+            if (props.onClick) {
+              props.onClick();
+            }
+          }}
+        >
+          {props.text}
+        </button>
+      )}
+    </Fragment>
   );
 };
 

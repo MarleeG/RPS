@@ -1,20 +1,36 @@
 .modal__container {
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: start;
+  z-index: 10;
 
   border: 1px solid #d2d2cf;
   width: 40%;
-  height: 20vw;
+  height: 24vw;
 
-  background: #e2e2df;
+  background: #ffffff;
 }
-.modal__container > h1{
-    font-size: 50px;
+.modal__container > h1 {
+  font-size: 50px;
 }
 
+.modal__container > p {
+  font-size: 30px;
+  padding: 10px;
+}
 
-.modal__container > p{
+.modal__container > span{
+    position: absolute;
+    right: 0;
+    padding: 10px 20px;
     font-size: 30px;
-    padding: 10px;
+}
+
+.modal__container > span:active{
+    transform: translateY(3px);
+}
+
+.modal__btn {
+  font-size: 25px;
 }

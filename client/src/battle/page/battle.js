@@ -6,11 +6,14 @@ import { cardInfo } from "../../challenge/data/cardInfo";
 import "./battle.css";
 import Button from "../../UIElements/Button";
 import Modal from "../../UIElements/Modal";
+import Backdrop from "../../UIElements/Backdrop";
 
 const Battle = () => {
   const { battleTypeParam } = useParams();
   const [fallbackHeader, setFallbackHeader] = useState();
   const [instructions, setInstructions] = useState("");
+  const [showModal, setShowModal] = useState(true);
+  const [showBackdrop, setShowBackdrop] = useState(true);
 
   const getAcceptableBattleType = useCallback(
     (arrayData) => {
@@ -20,41 +23,48 @@ const Battle = () => {
         battleTypes.push(arrayData[i].type);
       }
 
-
-
       if (
         battleTypes.indexOf(battleTypeParam) === -1 &&
         battleTypes.length > 0
       ) {
         setFallbackHeader("Choose a valid battle");
-      }else{
+      } else {
         // set the battle instructions
-        const battleInstructions = arrayData.find(battle => battle.type === battleTypeParam);
+        const battleInstructions = arrayData.find(
+          (battle) => battle.type === battleTypeParam
+        );
         setInstructions(battleInstructions.clear_instructions);
-        // getBattleInstructions()
       }
     },
     [battleTypeParam]
   );
 
-  // const getBattleInstructions = (param) => {
-  //   let text = ""
-  //   // if(param === "nice-guy"){
-  //   //   text=
-      
-  //   // }
-
-
-  //   setInstructions(text);
-  // }
+  const hideModal = () => {
+    setShowModal(false);
+    setShowBackdrop(false);
+  };
 
   const battleContent = () => {
-    const content = (<div className="battle__content">
-      <Modal show={true} classes="center animate__animated animate__backInDown font-amatic" header="Instructions" text={instructions}/>
-    </div>);
+    const content = (
+      <div className="battle__content">
+        <Backdrop
+          classes="animate__animated animate__fadeIn"
+          showBackdrop={showBackdrop}
+          // hideModal={() => hideModal()}
+        >
+          <Modal
+            show={showModal}
+            classes="center animate__animated animate__backInDown font-amatic"
+            header="Instructions"
+            text={instructions}
+            hideModal={() => hideModal()}
+          />
+        </Backdrop>
+      </div>
+    );
 
-    return content
-  }
+    return content;
+  };
 
   useEffect(() => {
     getAcceptableBattleType(cardInfo);
@@ -83,7 +93,9 @@ const Battle = () => {
               type="button"
             />
           </div>
-        ) : battleContent()}
+        ) : (
+          battleContent()
+        )}
       </div>
     </PageTemplate>
   );

@@ -1,14 +1,17 @@
 import React, { Fragment } from "react";
 import { CSSTransition } from "react-transition-group";
 import ReactDOM from "react-dom";
+import Button from '../UIElements/Button';
 
 import "./Modal.css";
 
 const ModalOverlay = (props) => {
   const content = (
     <div className={`modal__container ${props.classes}`}>
+        <span onClick={props.hideModal}>X</span>
       <h1>{props.header}</h1>
       <p>{props.text}</p>
+      <Button text="play" classes="font-amatic modal__btn button--bop" onClick={props.hideModal} />
     </div>
   );
 

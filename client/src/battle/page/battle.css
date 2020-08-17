@@ -1,19 +1,74 @@
 h1.battle__header {
   font-size: 90px;
   border: 2px dotted blueviolet;
-
 }
 
-.battle__container{
+.battle__container {
   padding: 10px;
   border: 2px dotted green;
   width: 100%;
   height: 100%;
+
 }
 
-.battle__content{
+.battle__content {
+  padding-top: 15px;
+
   border: 2px dotted orange;
-  /* height: 100%; */
+  border-top: 2px solid black;
+  height: 82%;
 
-  /* position: absolute; */
+  background: linear-gradient(145deg, black 8px, transparent 0),
+    linear-gradient(-145deg, black 8px, transparent 0);
+  background-repeat: repeat-x;
+  background-size: 16px 16px;
 }
+
+/* Game Grid */
+.battle__user-selection-parent {
+  border: 2px dotted pink;
+  height: 40%;
+  width: 100%;
+
+
+}
+
+
+.battle__user-selection, .battle__score{
+  height: 20%;
+  flex-direction: row;
+  display: flex;
+
+
+}
+
+.battle__user-selection-one, .battle__user-selection-two, .battle__score-one, .battle__score-two{
+  width: 50%;
+  border: 2px dotted purple;
+
+}
+
+/* Avatars & Options/Weapons */
+
+.battle__player-and-options{
+  border: 2px dotted black;
+  height: 60%;
+}
+.battle__player-and-options{
+  display: flex;
+  flex-direction: row;
+}
+
+.battle__player-one, .battle__player-two{
+  width: 40%;
+  border: 2px dotted yellowgreen;
+}
+
+
+.battle__options{
+  width: 20%;
+  border: 2px dotted yellowgreen;
+
+}
+
+

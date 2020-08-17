@@ -44,13 +44,59 @@ const Battle = () => {
     setShowBackdrop(false);
   };
 
+  const gameGrid = () => {
+    const content = (
+      <div className="battle__grid">
+        {/* User selections and scores */}
+        <div className="battle__user-selection-parent">
+          <div className="battle__user-selection">
+            {/* User Selection */}
+            <div className="battle__user-selection-one">
+              User Selection Display here
+            </div>
+
+            <div className="battle__user-selection-two battle__user-selection">
+              Bot Selection Display Here
+            </div>
+          </div>
+
+          {/* Score */}
+          <div className="battle__score">
+            <div className="battle__score-one battle__score">
+              User Battle Score One
+            </div>
+            <div className="battle__score-two battle__score">
+              Bot Battle Score Two
+            </div>
+          </div>
+        </div>
+
+        {/* player avatars and user options */}
+        <div className="battle__player-and-options">
+          <div className="battle__player-one">AVATAR</div>
+          <div className="battle__options">
+            {["R", "P", "S"].map((weapon, i) => {
+              return (
+                <div key={i}>
+                  <h4 className="font-amatic">{weapon}</h4>
+                </div>
+              );
+            })}
+          </div>
+          <div className="battle__player-two">AVATAR</div>
+        </div>
+      </div>
+    );
+
+    return content;
+  };
+
   const battleContent = () => {
     const content = (
       <div className="battle__content">
         <Backdrop
           classes="animate__animated animate__fadeIn"
           showBackdrop={showBackdrop}
-          // hideModal={() => hideModal()}
         >
           <Modal
             show={showModal}
@@ -60,6 +106,7 @@ const Battle = () => {
             hideModal={() => hideModal()}
           />
         </Backdrop>
+        {gameGrid()}
       </div>
     );
 

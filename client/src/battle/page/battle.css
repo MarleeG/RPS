@@ -72,3 +72,36 @@ h1.battle__header {
 }
 
 
+/* Weapon images */
+
+
+div.battle__options > :first-child, div.battle__options > :nth-child(2){
+  border-bottom: 1px solid #f2eded;
+}
+
+
+/* div.battle__weapon:hover{
+  border: 4px solid #f2eded;
+  border-radius: 5px;
+} */
+
+.battle__weapon{
+  width: 70%;
+
+  padding: 5px;
+ margin: 5px auto;
+}
+
+
+img.battle__weapon-img{
+  width: 6vw;
+}
+
+/* attribute link */
+a.battle__vecteezy-attr-link{
+  text-decoration: none;
+}
+
+a.battle__vecteezy-attr-link:hover{
+text-decoration: none;
+}

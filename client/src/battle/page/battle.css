@@ -68,7 +68,8 @@ h1.battle__header {
 .battle__options{
   width: 20%;
   border: 2px dotted yellowgreen;
-
+  border-left: 1px solid #f2eded;
+  border-right: 1px solid #f2eded;
 }
 
 

@@ -69,43 +69,37 @@ const Battle = () => {
   };
 
   const renderWeaponOptions = (image, key) => {
-
     const content = (
       <div key={key} className={`battle__weapon`}>
-        <a
-          href="https://www.vecteezy.com/vector-art/691489-retro-offset-rock-paper-scissors-icons"
-          className="battle__vecteezy-attr-link"
-        >
-          {image.alt === "rock" && (
-            <img
-              src={image.src}
-              alt={image.alt}
-              className={`battle__weapon-img animate__animated animate__${animateRock} battle__img-${image.alt}`}
-              onMouseEnter={() => animateIcon(image.alt, true)}
-              onMouseLeave={() => animateIcon(image.alt, false)}
-            />
-          )}
+        {image.alt === "rock" && (
+          <img
+            src={image.src}
+            alt={image.alt}
+            className={`battle__weapon-img animate__animated animate__${animateRock} battle__img-${image.alt}`}
+            onMouseEnter={() => animateIcon(image.alt, true)}
+            onMouseLeave={() => animateIcon(image.alt, false)}
+          />
+        )}
 
-          {image.alt === "paper" && (
-            <img
-              src={image.src}
-              alt={image.alt}
-              className={`battle__weapon-img animate__animated animate__${animatePaper} battle__img-${image.alt}`}
-              onMouseEnter={() => animateIcon(image.alt, true)}
-              onMouseLeave={() => animateIcon(image.alt, false)}
-            />
-          )}
+        {image.alt === "paper" && (
+          <img
+            src={image.src}
+            alt={image.alt}
+            className={`battle__weapon-img animate__animated animate__${animatePaper} battle__img-${image.alt}`}
+            onMouseEnter={() => animateIcon(image.alt, true)}
+            onMouseLeave={() => animateIcon(image.alt, false)}
+          />
+        )}
 
-          {image.alt === "scissor" && (
-            <img
-              src={image.src}
-              alt={image.alt}
-              className={`battle__weapon-img animate__animated animate__${animateScissors} battle__img-${image.alt}`}
-              onMouseEnter={() => animateIcon(image.alt, true)}
-              onMouseLeave={() => animateIcon(image.alt, false)}
-            />
-          )}
-        </a>
+        {image.alt === "scissor" && (
+          <img
+            src={image.src}
+            alt={image.alt}
+            className={`battle__weapon-img animate__animated animate__${animateScissors} battle__img-${image.alt}`}
+            onMouseEnter={() => animateIcon(image.alt, true)}
+            onMouseLeave={() => animateIcon(image.alt, false)}
+          />
+        )}
 
         <h5 className="font-amatic">{image.name}</h5>
       </div>

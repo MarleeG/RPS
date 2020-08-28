@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 import PageTemplate from "../../UIElements/page-template";
 import { cardInfo } from "../../challenge/data/cardInfo";
-import { getWeaponsData } from "../components/getWeaponsData";
+import { getWeaponsData, getAvatarData } from "../components/getImageData";
 
 import "./battle.css";
 import Button from "../../UIElements/Button";
@@ -15,9 +15,6 @@ const Battle = () => {
   const [instructions, setInstructions] = useState("");
   const [showModal, setShowModal] = useState(true);
   const [showBackdrop, setShowBackdrop] = useState(true);
-
-  // this is will set/unset the animation styling for the RPS images/icons
-  const [animateRPSIcon, setAnimateRPSIcon] = useState("");
 
   const [animateRock, setAnimateRock] = useState("");
   const [animatePaper, setAnimatePaper] = useState("");
@@ -137,13 +134,19 @@ const Battle = () => {
 
         {/* player avatars and user options */}
         <div className="battle__player-and-options">
-          <div className="battle__player-one">AVATAR</div>
+          <div className="battle__player-one">
+            <h4>AVATAR 1 | {getAvatarData()[3].name}</h4>
+            <img src={getAvatarData()[3].src} alt={getAvatarData()[3].alt}/>
+          </div>
           <div className="battle__options">
             {getWeaponsData().map((image, key) => {
               return renderWeaponOptions(image, key);
             })}
           </div>
-          <div className="battle__player-two">AVATAR</div>
+          <div className="battle__player-two">
+            <h4>AVATAR 2 | {getAvatarData()[1].name}</h4>
+            <img src={getAvatarData()[1].src} alt={getAvatarData()[1].alt}/>
+          </div>
         </div>
       </div>
     );

@@ -102,11 +102,11 @@ img.battle__weapon-img{
   width: 6vw;
 }
 
-/* attribute link */
-a.battle__vecteezy-attr-link{
-  text-decoration: none;
+
+/* Battle Avatars */
+
+.battle__player-one img, .battle__player-two img {
+  width: 150px;
 }
 
-a.battle__vecteezy-attr-link:hover{
-text-decoration: none;
-}
+

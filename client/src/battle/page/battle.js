@@ -19,6 +19,9 @@ const Battle = () => {
   const [animateRock, setAnimateRock] = useState("");
   const [animatePaper, setAnimatePaper] = useState("");
   const [animateScissors, setAnimateScissors] = useState("");
+  
+  const [avatarOneName, setAvatarOneName] = useState("");
+  const [avatarTwoName, setAvatarTwoName] = useState("");
 
   const getAcceptableBattleType = useCallback(
     (arrayData) => {
@@ -63,6 +66,7 @@ const Battle = () => {
       setAnimatePaper("");
       setAnimateScissors("");
     }
+
   };
 
   const renderWeaponOptions = (image, key) => {
@@ -102,6 +106,7 @@ const Battle = () => {
       </div>
     );
 
+    
     return content;
   };
 
@@ -135,7 +140,7 @@ const Battle = () => {
         {/* player avatars and user options */}
         <div className="battle__player-and-options">
           <div className="battle__player-one">
-            <h4 className="font-amatic">AVATAR 1 | {getAvatarData()[3].name}</h4>
+            <h4 className="font-amatic"> {avatarOneName}</h4>
             <img src={getAvatarData()[3].src} alt={getAvatarData()[3].alt}/>
           </div>
           <div className="battle__options">
@@ -144,12 +149,14 @@ const Battle = () => {
             })}
           </div>
           <div className="battle__player-two">
-            <h4 className="font-amatic">AVATAR 2 | {getAvatarData()[1].name}</h4>
+            <h4 className="font-amatic"> {avatarTwoName}</h4>
             <img src={getAvatarData()[1].src} alt={getAvatarData()[1].alt}/>
           </div>
         </div>
       </div>
     );
+
+    
 
     return content;
   };
@@ -178,6 +185,10 @@ const Battle = () => {
 
   useEffect(() => {
     getAcceptableBattleType(cardInfo);
+    setAvatarOneName(getAvatarData()[3].name);
+    setAvatarTwoName(getAvatarData()[1].name);
+
+
   }, [setFallbackHeader, getAcceptableBattleType]);
 
   return (

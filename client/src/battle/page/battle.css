@@ -110,4 +110,8 @@ img.battle__weapon-img{
   margin: 10px;
 }
 
+.battle__player-one h4, .battle__player-two h4{
+  font-size: 40px;
+}
+
 

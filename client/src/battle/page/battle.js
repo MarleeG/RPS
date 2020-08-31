@@ -135,7 +135,7 @@ const Battle = () => {
         {/* player avatars and user options */}
         <div className="battle__player-and-options">
           <div className="battle__player-one">
-            <h4>AVATAR 1 | {getAvatarData()[3].name}</h4>
+            <h4 className="font-amatic">AVATAR 1 | {getAvatarData()[3].name}</h4>
             <img src={getAvatarData()[3].src} alt={getAvatarData()[3].alt}/>
           </div>
           <div className="battle__options">
@@ -144,7 +144,7 @@ const Battle = () => {
             })}
           </div>
           <div className="battle__player-two">
-            <h4>AVATAR 2 | {getAvatarData()[1].name}</h4>
+            <h4 className="font-amatic">AVATAR 2 | {getAvatarData()[1].name}</h4>
             <img src={getAvatarData()[1].src} alt={getAvatarData()[1].alt}/>
           </div>
         </div>

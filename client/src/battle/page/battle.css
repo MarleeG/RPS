@@ -106,7 +106,8 @@ img.battle__weapon-img{
 /* Battle Avatars */
 
 .battle__player-one img, .battle__player-two img {
-  width: 150px;
+  width: 225px;
+  margin: 10px;
 }
 
 

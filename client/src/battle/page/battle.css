@@ -114,4 +114,17 @@ img.battle__weapon-img{
   font-size: 40px;
 }
 
+.battle__player-one p, .battle__player-two p{
+  margin: 40px;
+}
 
+.battle__player-backdrop {
+  background: rgb(28, 28, 28);
+  background: linear-gradient(
+    308deg,
+    rgba(28, 28, 28, 0.31645631038052047) 6%,
+    rgba(28, 28, 28, 0.32) 12%
+  );
+
+  opacity: .5;
+}

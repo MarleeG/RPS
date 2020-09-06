@@ -25,6 +25,13 @@ const Battle = () => {
   const [animateScissors, setAnimateScissors] = useState("");
 
   const [avatarPlayers, setAvatarPlayers] = useState([]);
+  const [playerOneClasses, setPlayerOneClasses] = useState([
+    "battle__player-one",
+  ]);
+
+  const [playerTwoClasses, setPlayerTwoClasses] = useState([
+    "battle__player-two",
+  ]);
 
   const getAcceptableBattleType = useCallback(
     (arrayData) => {
@@ -49,6 +56,23 @@ const Battle = () => {
     },
     [battleTypeParam]
   );
+
+  const setPlayerTurn = () => {
+    let randomNum = Math.floor(Math.random() * 2);
+
+    // if backdrop is not displayed...
+    if (!showBackdrop) {
+      if (randomNum == 0) {
+        // disable the 2nd player
+        setPlayerTwoClasses(["battle__player-two", "battle__player-backdrop"]);
+      } else if (randomNum == 1) {
+        // disable the 1st player
+        setPlayerOneClasses(["battle__player-one", "battle__player-backdrop"]);
+      }
+    }
+
+    // alert(`Random Num: ${randomNum}`);
+  };
 
   const hideModal = () => {
     setShowModal(false);
@@ -140,26 +164,32 @@ const Battle = () => {
 
         {/* player avatars and user options */}
         <div className="battle__player-and-options">
-          <div className="battle__player-one">
+          {/* Player One */}
+          <div className={playerOneClasses.join(" ")}>
             <h4 className="font-amatic">
-              {" "}
               {avatarPlayers.length > 0 && avatarPlayers[0].name}
             </h4>
             <img
               src={avatarPlayers.length > 0 && avatarPlayers[0].src}
               alt={avatarPlayers.length > 0 && avatarPlayers[0].alt}
             />
+
+            <p className="battle__player-one-footer">YOU</p>
           </div>
+
+          {/* Weapons */}
           <div className="battle__options">
             {getWeaponsData().map((image, key) => {
               return renderWeaponOptions(image, key);
             })}
           </div>
-          <div className="battle__player-two">
+
+          {/* Player Two */}
+          <div className={playerTwoClasses.join(" ")}>
             <h4 className="font-amatic">
-              {" "}
               {avatarPlayers.length > 0 && avatarPlayers[1].name}
             </h4>
+
             <img
               src={
                 avatarPlayers.length > 0 &&
@@ -168,6 +198,8 @@ const Battle = () => {
               }
               alt={avatarPlayers.length > 0 && avatarPlayers[1].alt}
             />
+
+            <p className="battle__player-one-footer">BOT</p>
           </div>
         </div>
       </div>
@@ -203,7 +235,10 @@ const Battle = () => {
 
     setAvatarPlayers(getTwoPlayers(getAvatarData()));
 
-  }, [setFallbackHeader, getAcceptableBattleType]);
+    if (!showBackdrop && !showModal) {
+      setPlayerTurn();
+    }
+  }, [setFallbackHeader, getAcceptableBattleType, showBackdrop, showModal]);
 
   return (
     <PageTemplate classes="center battle-template-style">

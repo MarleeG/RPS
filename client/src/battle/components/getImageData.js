@@ -68,7 +68,6 @@ export const getTwoPlayers = (array) => {
     }
   }
 
-
   // log(randomIndices);
   log(`Index 1: ${randomIndices[0]}`);
   log(`Index 2: ${randomIndices[1]}`);
@@ -77,14 +76,24 @@ export const getTwoPlayers = (array) => {
   let firstPlayerIndex = randomIndices[0];
   let secondPlayerIndex = randomIndices[1];
 
-
-
-
   let charactersSelected = [array[firstPlayerIndex], array[secondPlayerIndex]];
-
-  
 
   // log(charactersSelected);
 
   return charactersSelected;
+};
+
+export const GameData = (index, property, value) => {
+  let data = [{ player_footer_text: "YOU" }, { player_footer_text: "BOT" }];
+
+  if (index && value) {
+    alert("updating");
+
+    data[index][property] = value;
+    log(data);
+    // return data;
+  }
+
+  // log(data);
+  return data;
 };

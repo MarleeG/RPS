@@ -6,6 +6,7 @@ import {
   getWeaponsData,
   getAvatarData,
   getTwoPlayers,
+  // GameData,
 } from "../components/getImageData";
 
 import "./battle.css";
@@ -32,6 +33,13 @@ const Battle = () => {
   const [playerTwoClasses, setPlayerTwoClasses] = useState([
     "battle__player-two",
   ]);
+
+  const [gameData, updateGameData] = useState([
+    { player_footer_text: "YOU" },
+    { player_footer_text: "BOT" },
+  ]);
+
+  // const [rpsData, updateRPSData] = useState([]);
 
   const getAcceptableBattleType = useCallback(
     (arrayData) => {
@@ -63,15 +71,24 @@ const Battle = () => {
     // if backdrop is not displayed...
     if (!showBackdrop) {
       if (randomNum == 0) {
+        let updated_footer_p1 = gameData;
+
+        updated_footer_p1[0].player_footer_text = "YOUR TURN";
+
+        updateGameData(updated_footer_p1);
+
         // disable the 2nd player
         setPlayerTwoClasses(["battle__player-two", "battle__player-backdrop"]);
       } else if (randomNum == 1) {
+
+        let updated_footer_p2 = gameData;
+
+        updated_footer_p2[1].player_footer_text = "BOT'S TURN";
+
         // disable the 1st player
         setPlayerOneClasses(["battle__player-one", "battle__player-backdrop"]);
       }
     }
-
-    // alert(`Random Num: ${randomNum}`);
   };
 
   const hideModal = () => {
@@ -166,15 +183,17 @@ const Battle = () => {
         <div className="battle__player-and-options">
           {/* Player One */}
           <div className={playerOneClasses.join(" ")}>
-            <h4 className="font-amatic">
-              {avatarPlayers.length > 0 && avatarPlayers[0].name}
-            </h4>
-            <img
-              src={avatarPlayers.length > 0 && avatarPlayers[0].src}
-              alt={avatarPlayers.length > 0 && avatarPlayers[0].alt}
-            />
+            {avatarPlayers.length > 0 && (
+              <div>
+                <h4 className="font-amatic">{avatarPlayers[0].name}</h4>
+                <img src={avatarPlayers[0].src} alt={avatarPlayers[0].alt} />
+              </div>
+            )}
 
-            <p className="battle__player-one-footer">YOU</p>
+            <p className="battle__player-one-footer">
+              {/* {GameData()[0].player_footer_text} */}
+              {gameData[0].player_footer_text}
+            </p>
           </div>
 
           {/* Weapons */}
@@ -186,20 +205,18 @@ const Battle = () => {
 
           {/* Player Two */}
           <div className={playerTwoClasses.join(" ")}>
-            <h4 className="font-amatic">
-              {avatarPlayers.length > 0 && avatarPlayers[1].name}
-            </h4>
+            {avatarPlayers.length > 0 ? (
+              <div>
+                <h4 className="font-amatic">{avatarPlayers[1].name}</h4>
 
-            <img
-              src={
-                avatarPlayers.length > 0 &&
-                avatarPlayers.length > 0 &&
-                avatarPlayers[1].src
-              }
-              alt={avatarPlayers.length > 0 && avatarPlayers[1].alt}
-            />
+                <img src={avatarPlayers[1].src} alt={avatarPlayers[1].alt} />
+              </div>
+            ) : null}
 
-            <p className="battle__player-one-footer">BOT</p>
+            <p className="battle__player-one-footer">
+              {gameData[1].player_footer_text}
+
+            </p>
           </div>
         </div>
       </div>
@@ -234,6 +251,8 @@ const Battle = () => {
     getAcceptableBattleType(cardInfo);
 
     setAvatarPlayers(getTwoPlayers(getAvatarData()));
+
+    // updateRPSData(GameData())
 
     if (!showBackdrop && !showModal) {
       setPlayerTurn();

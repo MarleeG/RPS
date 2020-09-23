@@ -25,7 +25,7 @@ export const getWeaponsData = () => {
   const weaponImages = [
     { src: Rock, alt: "rock", name: "Rock" },
     { src: Paper, alt: "paper", name: "Paper" },
-    { src: Scissors, alt: "scissor", name: "Scissors" },
+    { src: Scissors, alt: "scissors", name: "Scissors" },
   ];
 
   return weaponImages;
@@ -69,8 +69,8 @@ export const getTwoPlayers = (array) => {
   }
 
   // log(randomIndices);
-  log(`Index 1: ${randomIndices[0]}`);
-  log(`Index 2: ${randomIndices[1]}`);
+  // log(`Index 1: ${randomIndices[0]}`);
+  // log(`Index 2: ${randomIndices[1]}`);
   // log('Array ', array);
 
   let firstPlayerIndex = randomIndices[0];

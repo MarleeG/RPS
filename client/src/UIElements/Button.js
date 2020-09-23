@@ -19,7 +19,7 @@ const Button = (props) => {
       setIsAnimated(false);
     }
 
-    log(`animateOption:: ${animateOption}`);
+    // log(`animateOption:: ${animateOption}`);
   }, [props.classes]);
 
   useEffect(() => {

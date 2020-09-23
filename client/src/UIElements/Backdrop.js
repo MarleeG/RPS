@@ -7,7 +7,7 @@ const log = console.log;
 const Backdrop = (props) => {
   const [backdropDisplay, setBackdropDisplay] = useState("block");
 
-  log(props.showBackdrop);
+  // log(props.showBackdrop);
 
   useEffect(() => {
     if (props.showBackdrop) {

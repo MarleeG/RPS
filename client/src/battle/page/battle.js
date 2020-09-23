@@ -14,6 +14,7 @@ import Button from "../../UIElements/Button";
 import Modal from "../../UIElements/Modal";
 import Backdrop from "../../UIElements/Backdrop";
 
+const log = console.log;
 const Battle = () => {
   const { battleTypeParam } = useParams();
   const [fallbackHeader, setFallbackHeader] = useState();
@@ -26,6 +27,7 @@ const Battle = () => {
   const [animateScissors, setAnimateScissors] = useState("");
 
   const [avatarPlayers, setAvatarPlayers] = useState([]);
+
   const [playerOneClasses, setPlayerOneClasses] = useState([
     "battle__player-one",
   ]);
@@ -38,6 +40,8 @@ const Battle = () => {
     { player_footer_text: "YOU" },
     { player_footer_text: "BOT" },
   ]);
+
+  const [weaponChoosen, setWeaponChoosen] = useState("");
 
   // const [rpsData, updateRPSData] = useState([]);
 
@@ -65,28 +69,85 @@ const Battle = () => {
     [battleTypeParam]
   );
 
-  const setPlayerTurn = () => {
-    let randomNum = Math.floor(Math.random() * 2);
+  const setPlayerTurn = (player) => {
+    let randomNum = player || Math.floor(Math.random() * 2);
+
+    log(`PLAYER ${randomNum + 1}'s turn`);
 
     // if backdrop is not displayed...
     if (!showBackdrop) {
-      if (randomNum == 0) {
-        let updated_footer_p1 = gameData;
+      let updated_footer = gameData;;
 
-        updated_footer_p1[0].player_footer_text = "YOUR TURN";
+      // if the random number (randomNum) is 0 then it's user's turn
+      if (randomNum === 0) {
+        // updated_footer = gameData;
 
-        updateGameData(updated_footer_p1);
+        updated_footer[0].player_footer_text = "YOUR TURN";
+        updated_footer[1].player_footer_text = "BOT";
 
-        // disable the 2nd player
-        setPlayerTwoClasses(["battle__player-two", "battle__player-backdrop"]);
-      } else if (randomNum == 1) {
 
-        let updated_footer_p2 = gameData;
 
-        updated_footer_p2[1].player_footer_text = "BOT'S TURN";
+        if (!player) {
+          // disable the 2nd player
+          setPlayerTwoClasses([
+            "battle__player-two",
+            "battle__player-backdrop",
+          ]);
+          setPlayerOneClasses(["battle__player-one"]);
+          log(`player defined: ${player}`);
+          log("disabling player 2. enabling player 1. - a");
+        }
+
+        // if the random number (randomNum) is 1 then it's bot's turn
+      } else if (randomNum === 1) {
+        // let updated_footer_p2 = gameData;
+
+        updated_footer[1].player_footer_text = "BOT'S TURN";
+        updated_footer[0].player_footer_text = "YOU";
+
 
         // disable the 1st player
+        if (!player) {
+          setPlayerOneClasses([
+            "battle__player-one",
+            "battle__player-backdrop",
+          ]);
+
+          setPlayerTwoClasses(["battle__player-two"]);
+          log(`player defined: ${player}`);
+          log("disabling player 1. enabling player 2 -b");
+        }
+      }
+
+      updateGameData(updated_footer);
+
+    }
+  };
+
+  const updateWeaponChoosenByUser = (weapon) => {
+    console.log(`weapon: ${weapon}`);
+    setWeaponChoosen(weapon);
+
+    if(weapon){
+      if (playerOneClasses.length === 2 && playerTwoClasses.length === 1) {
+        // remove the class battle__player-backdrop for player 1
+        setPlayerOneClasses(["battle__player-one"]);
+        setPlayerTurn(0);
+  
+        // add class battle__player-backdrop for player 2
+        setPlayerTwoClasses(["battle__player-two", "battle__player-backdrop"]);
+  
+        log("disabling player 2. enable player 1 - c");
+      } else if (playerTwoClasses.length === 2 && playerOneClasses.length === 1) {
+        // playerTwoClasses has a length of 2
+        // enable player 2
+  
+        setPlayerTwoClasses(["battle__player-two"]);
+        setPlayerTurn(1);
+  
+        // add class battle__player-backdrop for player 2
         setPlayerOneClasses(["battle__player-one", "battle__player-backdrop"]);
+        log("disabling player 1. enable player 2 - d");
       }
     }
   };
@@ -114,7 +175,11 @@ const Battle = () => {
 
   const renderWeaponOptions = (image, key) => {
     const content = (
-      <div key={key} className={`battle__weapon`}>
+      <div
+        key={key}
+        className={`battle__weapon`}
+        onClick={() => updateWeaponChoosenByUser(image.alt)}
+      >
         {image.alt === "rock" && (
           <img
             src={image.src}
@@ -135,7 +200,7 @@ const Battle = () => {
           />
         )}
 
-        {image.alt === "scissor" && (
+        {image.alt === "scissors" && (
           <img
             src={image.src}
             alt={image.alt}
@@ -215,7 +280,6 @@ const Battle = () => {
 
             <p className="battle__player-one-footer">
               {gameData[1].player_footer_text}
-
             </p>
           </div>
         </div>
